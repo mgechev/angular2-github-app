@@ -1,0 +1,28 @@
+<div class="container">
+  <section class="col-md-7">
+    <!-- Form Name -->
+    <legend>GitHub User</legend>
+
+    <!-- Text input-->
+    <div class="control-group">
+      <label class="control-label" for="user-input">GitHub user</label>
+      <div class="controls">
+        <input #currentuser id="user-input" name="user-input" type="text" placeholder="enter github username here..." class="input-xlarge" required>
+        <button class="btn btn-primary" (click)="addUser(currentuser)">Add</button>
+      </div>
+    </div>
+  </section>
+  <div class="col-md-5">
+    <legend>All Users</legend>
+    <table class="table table-striped">
+      <tbody>
+        <tr *ng-for="#user of users">
+          <td>{{user}}</td>
+          <td>
+            <button (click)="removeUser(user)" class="btn btn-danger">×</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
