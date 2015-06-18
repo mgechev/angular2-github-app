@@ -12,9 +12,13 @@
       </div>
     </div>
   </section>
-  <div class="col-md-5">
+  <div class="col-md-5" *ng-if="users.length > 0">
     <legend>All Users</legend>
     <table class="table table-striped">
+      <thead>
+        <th>Username</th>
+        <th>Remove</th>
+      </thead>
       <tbody>
         <tr *ng-for="#user of users">
           <td>{{user}}</td>
