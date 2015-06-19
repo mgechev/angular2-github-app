@@ -12,5 +12,4 @@ import {Home} from './components/home/Home';
 })
 class App {}
 
-
 bootstrap(App);
