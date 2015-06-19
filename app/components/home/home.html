@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <tr *ng-for="#user of users">
-          <td>{{user}}</td>
+          <td><a router-link="users">{{user}}</a></td>
           <td>
             <button (click)="removeUser(user)" class="btn btn-danger">×</button>
           </td>
