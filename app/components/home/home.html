@@ -8,7 +8,7 @@
       <label class="control-label" for="user-input">GitHub user</label>
       <div class="controls">
         <input #currentuser id="user-input" name="user-input" type="text" placeholder="enter github username here..." class="input-xlarge" required>
-        <button class="btn btn-primary" (click)="addUser(currentuser)">Add</button>
+        <button class="btn btn-primary" (click)="addUser(currentuser.value)">Add</button>
       </div>
     </div>
   </section>
@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <tr *ng-for="#user of users">
-          <td><a router-link="users">{{user}}</a></td>
+          <td><a href="javascript:void(0);" (click)="selectUser(user)">{{user}}</a></td>
           <td>
             <button (click)="removeUser(user)" class="btn btn-danger">×</button>
           </td>
@@ -29,4 +29,10 @@
       </tbody>
     </table>
   </div>
+</div>
+<br>
+<div class="container">
+  <div class="spinner" *ng-if="loading"></div>
+  <user-details *ng-if="selectedUser !== null">
+  </user-details>
 </div>

@@ -151,7 +151,8 @@ gulp.task('build.js.dev', function () {
 });
 
 gulp.task('build.assets.dev', ['build.js.dev'], function () {
-  return gulp.src(['./app/**/*.html', './app/**/*.css'].concat(PATH.src.css))
+  return gulp.src(['./app/**/*.html', './app/**/*.css',
+    './app/**/*.png', './app/**/*.gif'].concat(PATH.src.css))
     .pipe(gulp.dest(PATH.dest.dev.all));
 });
 
@@ -224,7 +225,7 @@ gulp.task('build.init.prod', function() {
 gulp.task('build.assets.prod', ['build.js.prod'], function () {
   var filterHTML = filter('**/*.html');
   var filterCSS = filter('**/*.css');
-  return gulp.src(['./app/**/*.html', './app/**/*.css'].concat(PATH.lib.css))
+  return gulp.src(['./app/**/*.html', './app/**/*.css', './app/img/**'].concat(PATH.lib.css))
     .pipe(filterHTML)
     .pipe(minifyHTML(HTMLMinifierOpts))
     .pipe(filterHTML.restore())
