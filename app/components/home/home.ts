@@ -1,23 +1,23 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import {Component, View, NgFor, NgIf} from 'angular2/angular2';
-import {RouterLink} from 'angular2/router';
-import {UserDetails} from './components/user-details/UserDetails';
+import {UserDetails} from '../../components/user-details/UserDetails';
 
 @Component({
   selector: 'home'
 })
 @View({
   templateUrl: './components/home/home.html?v=<%= VERSION %>',
-  directives: [NgFor, NgIf, RouterLink]
+  directives: [NgFor, NgIf, UserDetails]
 })
 export class Home {
   users:string[];
   cache:any;
   loading:boolean;
-  currentUser:any;
+  selectedUser:any;
   constructor() {
     this.users = [];
     this.cache = {};
+    this.selectedUser = null;
   }
   addUser(currentUser) {
     this.users.push(currentUser);
@@ -35,7 +35,7 @@ export class Home {
         })
         .then(user => {
           this.cache[u] = user;
-          return u;
+          return user;
         });
     }
   }
@@ -43,7 +43,8 @@ export class Home {
     this.loading = true;
     this.getUser(user)
       .then((u) => {
-        this.currentUser = u;
+        console.log(u);
+        this.selectedUser = u;
         this.loading = false;
       });
   }
