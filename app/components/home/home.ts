@@ -23,6 +23,9 @@ export class Home {
     this.users.push(currentUser);
   }
   removeUser(user) {
+    if (this.selectedUser && this.selectedUser.login === user) {
+      this.selectedUser = null;
+    }
     this.users.splice(this.users.indexOf(user), 1);
   }
   private getUser(u:string) {
@@ -40,6 +43,7 @@ export class Home {
     }
   }
   selectUser(user:string) {
+    this.selectedUser = null;
     this.loading = true;
     this.getUser(user)
       .then((u) => {
