@@ -9,7 +9,5 @@ import {Component, View} from 'angular2/angular2';
 })
 export class UserDetails {
   user:any;
-  constructor() {
-    console.log(this);
-  }
+  constructor() {}
 }
